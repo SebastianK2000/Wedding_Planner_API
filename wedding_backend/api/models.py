@@ -9,8 +9,8 @@ from django.db import models
 
 
 class Budgetcategories(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    name = models.CharField(db_column='Name', max_length=50, db_collation='Polish_CI_AS')  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    name = models.CharField(db_column='Name', max_length=50, db_collation='Polish_CI_AS')
 
     class Meta:
         managed = False
@@ -18,14 +18,14 @@ class Budgetcategories(models.Model):
 
 
 class Budgetitems(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    userid = models.ForeignKey('Users', models.DO_NOTHING, db_column='UserId', blank=True, null=True)  # Field name made lowercase.
-    categoryid = models.ForeignKey(Budgetcategories, models.DO_NOTHING, db_column='CategoryId', blank=True, null=True)  # Field name made lowercase.
-    name = models.CharField(db_column='Name', max_length=200, db_collation='Polish_CI_AS')  # Field name made lowercase.
-    plannedamount = models.DecimalField(db_column='PlannedAmount', max_digits=10, decimal_places=2, blank=True, null=True)  # Field name made lowercase.
-    actualamount = models.DecimalField(db_column='ActualAmount', max_digits=10, decimal_places=2, blank=True, null=True)  # Field name made lowercase.
-    ispaid = models.BooleanField(db_column='IsPaid', blank=True, null=True)  # Field name made lowercase.
-    notes = models.TextField(db_column='Notes', db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    userid = models.ForeignKey('Users', models.DO_NOTHING, db_column='UserId', blank=True, null=True)
+    categoryid = models.ForeignKey(Budgetcategories, models.DO_NOTHING, db_column='CategoryId', blank=True, null=True)
+    name = models.CharField(db_column='Name', max_length=200, db_collation='Polish_CI_AS')
+    plannedamount = models.DecimalField(db_column='PlannedAmount', max_digits=10, decimal_places=2, blank=True, null=True)
+    actualamount = models.DecimalField(db_column='ActualAmount', max_digits=10, decimal_places=2, blank=True, null=True)
+    ispaid = models.BooleanField(db_column='IsPaid', blank=True, null=True)
+    notes = models.TextField(db_column='Notes', db_collation='Polish_CI_AS', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -33,12 +33,12 @@ class Budgetitems(models.Model):
 
 
 class Companyinfo(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    email = models.CharField(db_column='Email', max_length=100, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    phone = models.CharField(db_column='Phone', max_length=50, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    address = models.CharField(db_column='Address', max_length=255, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    workinghours = models.CharField(db_column='WorkingHours', max_length=100, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    workmode = models.CharField(db_column='WorkMode', max_length=100, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    email = models.CharField(db_column='Email', max_length=100, db_collation='Polish_CI_AS', blank=True, null=True)
+    phone = models.CharField(db_column='Phone', max_length=50, db_collation='Polish_CI_AS', blank=True, null=True)
+    address = models.CharField(db_column='Address', max_length=255, db_collation='Polish_CI_AS', blank=True, null=True)
+    workinghours = models.CharField(db_column='WorkingHours', max_length=100, db_collation='Polish_CI_AS', blank=True, null=True)
+    workmode = models.CharField(db_column='WorkMode', max_length=100, db_collation='Polish_CI_AS', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -46,13 +46,13 @@ class Companyinfo(models.Model):
 
 
 class Contactmessages(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    sendername = models.CharField(db_column='SenderName', max_length=100, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    senderemail = models.CharField(db_column='SenderEmail', max_length=200, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    topic = models.CharField(db_column='Topic', max_length=50, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    message = models.TextField(db_column='Message', db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    isread = models.BooleanField(db_column='IsRead', blank=True, null=True)  # Field name made lowercase.
-    sentat = models.DateTimeField(db_column='SentAt', blank=True, null=True)  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    sendername = models.CharField(db_column='SenderName', max_length=100, db_collation='Polish_CI_AS', blank=True, null=True)
+    senderemail = models.CharField(db_column='SenderEmail', max_length=200, db_collation='Polish_CI_AS', blank=True, null=True)
+    topic = models.CharField(db_column='Topic', max_length=50, db_collation='Polish_CI_AS', blank=True, null=True)
+    message = models.TextField(db_column='Message', db_collation='Polish_CI_AS', blank=True, null=True)
+    isread = models.BooleanField(db_column='IsRead', blank=True, null=True)
+    sentat = models.DateTimeField(db_column='SentAt', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -60,8 +60,8 @@ class Contactmessages(models.Model):
 
 
 class Dietarypreferences(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    name = models.CharField(db_column='Name', max_length=50, db_collation='Polish_CI_AS')  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    name = models.CharField(db_column='Name', max_length=50, db_collation='Polish_CI_AS')
 
     class Meta:
         managed = False
@@ -69,9 +69,9 @@ class Dietarypreferences(models.Model):
 
 
 class Faqcategories(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    name = models.CharField(db_column='Name', max_length=100, db_collation='Polish_CI_AS')  # Field name made lowercase.
-    displayorder = models.IntegerField(db_column='DisplayOrder', blank=True, null=True)  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    name = models.CharField(db_column='Name', max_length=100, db_collation='Polish_CI_AS')
+    displayorder = models.IntegerField(db_column='DisplayOrder', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -79,11 +79,11 @@ class Faqcategories(models.Model):
 
 
 class Faqitems(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    categoryid = models.ForeignKey(Faqcategories, models.DO_NOTHING, db_column='CategoryId', blank=True, null=True)  # Field name made lowercase.
-    question = models.CharField(db_column='Question', max_length=300, db_collation='Polish_CI_AS')  # Field name made lowercase.
-    answer = models.TextField(db_column='Answer', db_collation='Polish_CI_AS')  # Field name made lowercase.
-    isvisible = models.BooleanField(db_column='IsVisible', blank=True, null=True)  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    categoryid = models.ForeignKey(Faqcategories, models.DO_NOTHING, db_column='CategoryId', blank=True, null=True)
+    question = models.CharField(db_column='Question', max_length=300, db_collation='Polish_CI_AS')
+    answer = models.TextField(db_column='Answer', db_collation='Polish_CI_AS')
+    isvisible = models.BooleanField(db_column='IsVisible', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -91,13 +91,13 @@ class Faqitems(models.Model):
 
 
 class Florists(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    companyname = models.CharField(db_column='CompanyName', max_length=200, db_collation='Polish_CI_AS')  # Field name made lowercase.
-    title = models.CharField(db_column='Title', max_length=200, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    city = models.CharField(db_column='City', max_length=100, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    pricefrom = models.DecimalField(db_column='PriceFrom', max_digits=10, decimal_places=2, blank=True, null=True)  # Field name made lowercase.
-    description = models.TextField(db_column='Description', db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    imageurl = models.TextField(db_column='ImageUrl', db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    companyname = models.CharField(db_column='CompanyName', max_length=200, db_collation='Polish_CI_AS')
+    title = models.CharField(db_column='Title', max_length=200, db_collation='Polish_CI_AS', blank=True, null=True)
+    city = models.CharField(db_column='City', max_length=100, db_collation='Polish_CI_AS', blank=True, null=True)
+    pricefrom = models.DecimalField(db_column='PriceFrom', max_digits=10, decimal_places=2, blank=True, null=True)
+    description = models.TextField(db_column='Description', db_collation='Polish_CI_AS', blank=True, null=True)
+    imageurl = models.TextField(db_column='ImageUrl', db_collation='Polish_CI_AS', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -105,8 +105,8 @@ class Florists(models.Model):
 
 
 class Gueststatuses(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    name = models.CharField(db_column='Name', max_length=50, db_collation='Polish_CI_AS')  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    name = models.CharField(db_column='Name', max_length=50, db_collation='Polish_CI_AS')
 
     class Meta:
         managed = False
@@ -114,10 +114,10 @@ class Gueststatuses(models.Model):
 
 
 class Guesttables(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    userid = models.ForeignKey('Users', models.DO_NOTHING, db_column='UserId', blank=True, null=True)  # Field name made lowercase.
-    tablename = models.CharField(db_column='TableName', max_length=50, db_collation='Polish_CI_AS')  # Field name made lowercase.
-    capacity = models.IntegerField(db_column='Capacity', blank=True, null=True)  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    userid = models.ForeignKey('Users', models.DO_NOTHING, db_column='UserId', blank=True, null=True)
+    tablename = models.CharField(db_column='TableName', max_length=50, db_collation='Polish_CI_AS')
+    capacity = models.IntegerField(db_column='Capacity', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -125,17 +125,17 @@ class Guesttables(models.Model):
 
 
 class Guests(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    userid = models.ForeignKey('Users', models.DO_NOTHING, db_column='UserId', blank=True, null=True)  # Field name made lowercase.
-    fullname = models.CharField(db_column='FullName', max_length=200, db_collation='Polish_CI_AS')  # Field name made lowercase.
-    side = models.CharField(db_column='Side', max_length=50, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    statusid = models.ForeignKey(Gueststatuses, models.DO_NOTHING, db_column='StatusId', blank=True, null=True)  # Field name made lowercase.
-    tableid = models.ForeignKey(Guesttables, models.DO_NOTHING, db_column='TableId', blank=True, null=True)  # Field name made lowercase.
-    dietid = models.ForeignKey(Dietarypreferences, models.DO_NOTHING, db_column='DietId', blank=True, null=True)  # Field name made lowercase.
-    plusone = models.BooleanField(db_column='PlusOne', blank=True, null=True)  # Field name made lowercase.
-    phone = models.CharField(db_column='Phone', max_length=20, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    email = models.CharField(db_column='Email', max_length=200, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    notes = models.TextField(db_column='Notes', db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    userid = models.ForeignKey('Users', models.DO_NOTHING, db_column='UserId', blank=True, null=True)
+    fullname = models.CharField(db_column='FullName', max_length=200, db_collation='Polish_CI_AS')
+    side = models.CharField(db_column='Side', max_length=50, db_collation='Polish_CI_AS', blank=True, null=True)
+    statusid = models.ForeignKey(Gueststatuses, models.DO_NOTHING, db_column='StatusId', blank=True, null=True)
+    tableid = models.ForeignKey(Guesttables, models.DO_NOTHING, db_column='TableId', blank=True, null=True)
+    dietid = models.ForeignKey(Dietarypreferences, models.DO_NOTHING, db_column='DietId', blank=True, null=True)
+    plusone = models.BooleanField(db_column='PlusOne', blank=True, null=True)
+    phone = models.CharField(db_column='Phone', max_length=20, db_collation='Polish_CI_AS', blank=True, null=True)
+    email = models.CharField(db_column='Email', max_length=200, db_collation='Polish_CI_AS', blank=True, null=True)
+    notes = models.TextField(db_column='Notes', db_collation='Polish_CI_AS', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -143,12 +143,12 @@ class Guests(models.Model):
 
 
 class Homesections(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    sectionkey = models.CharField(db_column='SectionKey', unique=True, max_length=50, db_collation='Polish_CI_AS')  # Field name made lowercase.
-    title = models.CharField(db_column='Title', max_length=200, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    subtitle = models.CharField(db_column='Subtitle', max_length=500, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    buttontext = models.CharField(db_column='ButtonText', max_length=50, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    imageurl = models.TextField(db_column='ImageUrl', db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    sectionkey = models.CharField(db_column='SectionKey', unique=True, max_length=50, db_collation='Polish_CI_AS')
+    title = models.CharField(db_column='Title', max_length=200, db_collation='Polish_CI_AS', blank=True, null=True)
+    subtitle = models.CharField(db_column='Subtitle', max_length=500, db_collation='Polish_CI_AS', blank=True, null=True)
+    buttontext = models.CharField(db_column='ButtonText', max_length=50, db_collation='Polish_CI_AS', blank=True, null=True)
+    imageurl = models.TextField(db_column='ImageUrl', db_collation='Polish_CI_AS', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -156,8 +156,8 @@ class Homesections(models.Model):
 
 
 class Musiciantypes(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    name = models.CharField(db_column='Name', max_length=100, db_collation='Polish_CI_AS')  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    name = models.CharField(db_column='Name', max_length=100, db_collation='Polish_CI_AS')
 
     class Meta:
         managed = False
@@ -165,13 +165,13 @@ class Musiciantypes(models.Model):
 
 
 class Musicians(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    name = models.CharField(db_column='Name', max_length=200, db_collation='Polish_CI_AS')  # Field name made lowercase.
-    city = models.CharField(db_column='City', max_length=100, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    pricefrom = models.DecimalField(db_column='PriceFrom', max_digits=10, decimal_places=2, blank=True, null=True)  # Field name made lowercase.
-    description = models.TextField(db_column='Description', db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    imageurl = models.TextField(db_column='ImageUrl', db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    rating = models.DecimalField(db_column='Rating', max_digits=2, decimal_places=1, blank=True, null=True)  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    name = models.CharField(db_column='Name', max_length=200, db_collation='Polish_CI_AS')
+    city = models.CharField(db_column='City', max_length=100, db_collation='Polish_CI_AS', blank=True, null=True)
+    pricefrom = models.DecimalField(db_column='PriceFrom', max_digits=10, decimal_places=2, blank=True, null=True)
+    description = models.TextField(db_column='Description', db_collation='Polish_CI_AS', blank=True, null=True)
+    imageurl = models.TextField(db_column='ImageUrl', db_collation='Polish_CI_AS', blank=True, null=True)
+    rating = models.DecimalField(db_column='Rating', max_digits=2, decimal_places=1, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -179,20 +179,21 @@ class Musicians(models.Model):
 
 
 class Musicianstypemap(models.Model):
+    # POPRAWKA: Usunięto CompositePrimaryKey
     musicianid = models.ForeignKey(Musicians, models.DO_NOTHING, db_column='MusicianId', primary_key=True)
     typeid = models.ForeignKey(Musiciantypes, models.DO_NOTHING, db_column='TypeId')
 
     class Meta:
         managed = False
         db_table = 'MusiciansTypeMap'
-        unique_together = (('musicianid', 'typeid'),)
+        unique_together = (('musicianid', 'typeid'),) # Dodano dla poprawności w Django
 
 
 class Newslettersubscribers(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    email = models.CharField(db_column='Email', unique=True, max_length=255, db_collation='Polish_CI_AS')  # Field name made lowercase.
-    subscribedat = models.DateTimeField(db_column='SubscribedAt', blank=True, null=True)  # Field name made lowercase.
-    isactive = models.BooleanField(db_column='IsActive', blank=True, null=True)  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    email = models.CharField(db_column='Email', unique=True, max_length=255, db_collation='Polish_CI_AS')
+    subscribedat = models.DateTimeField(db_column='SubscribedAt', blank=True, null=True)
+    isactive = models.BooleanField(db_column='IsActive', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -200,18 +201,19 @@ class Newslettersubscribers(models.Model):
 
 
 class Photographerstylemap(models.Model):
+    # POPRAWKA: Usunięto CompositePrimaryKey
     photographerid = models.ForeignKey('Photographers', models.DO_NOTHING, db_column='PhotographerId', primary_key=True)
     styleid = models.ForeignKey('Photographerstyles', models.DO_NOTHING, db_column='StyleId')
 
     class Meta:
         managed = False
         db_table = 'PhotographerStyleMap'
-        unique_together = (('photographerid', 'styleid'),)
+        unique_together = (('photographerid', 'styleid'),) # Dodano dla poprawności w Django
 
 
 class Photographerstyles(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    name = models.CharField(db_column='Name', max_length=100, db_collation='Polish_CI_AS')  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    name = models.CharField(db_column='Name', max_length=100, db_collation='Polish_CI_AS')
 
     class Meta:
         managed = False
@@ -219,12 +221,12 @@ class Photographerstyles(models.Model):
 
 
 class Photographers(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    name = models.CharField(db_column='Name', max_length=200, db_collation='Polish_CI_AS')  # Field name made lowercase.
-    city = models.CharField(db_column='City', max_length=100, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    pricefrom = models.DecimalField(db_column='PriceFrom', max_digits=10, decimal_places=2, blank=True, null=True)  # Field name made lowercase.
-    description = models.TextField(db_column='Description', db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    imageurl = models.TextField(db_column='ImageUrl', db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    name = models.CharField(db_column='Name', max_length=200, db_collation='Polish_CI_AS')
+    city = models.CharField(db_column='City', max_length=100, db_collation='Polish_CI_AS', blank=True, null=True)
+    pricefrom = models.DecimalField(db_column='PriceFrom', max_digits=10, decimal_places=2, blank=True, null=True)
+    description = models.TextField(db_column='Description', db_collation='Polish_CI_AS', blank=True, null=True)
+    imageurl = models.TextField(db_column='ImageUrl', db_collation='Polish_CI_AS', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -232,10 +234,10 @@ class Photographers(models.Model):
 
 
 class Sociallinks(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    platformname = models.CharField(db_column='PlatformName', max_length=50, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    url = models.CharField(db_column='Url', max_length=255, db_collation='Polish_CI_AS')  # Field name made lowercase.
-    iconname = models.CharField(db_column='IconName', max_length=50, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    platformname = models.CharField(db_column='PlatformName', max_length=50, db_collation='Polish_CI_AS', blank=True, null=True)
+    url = models.CharField(db_column='Url', max_length=255, db_collation='Polish_CI_AS')
+    iconname = models.CharField(db_column='IconName', max_length=50, db_collation='Polish_CI_AS', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -243,11 +245,11 @@ class Sociallinks(models.Model):
 
 
 class Staticpages(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    pagekey = models.CharField(db_column='PageKey', unique=True, max_length=50, db_collation='Polish_CI_AS')  # Field name made lowercase.
-    title = models.CharField(db_column='Title', max_length=200, db_collation='Polish_CI_AS')  # Field name made lowercase.
-    content = models.TextField(db_column='Content', db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    lastupdated = models.DateTimeField(db_column='LastUpdated', blank=True, null=True)  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    pagekey = models.CharField(db_column='PageKey', unique=True, max_length=50, db_collation='Polish_CI_AS')
+    title = models.CharField(db_column='Title', max_length=200, db_collation='Polish_CI_AS')
+    content = models.TextField(db_column='Content', db_collation='Polish_CI_AS', blank=True, null=True)
+    lastupdated = models.DateTimeField(db_column='LastUpdated', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -255,9 +257,9 @@ class Staticpages(models.Model):
 
 
 class Taskpriorities(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    name = models.CharField(db_column='Name', max_length=50, db_collation='Polish_CI_AS')  # Field name made lowercase.
-    colorcode = models.CharField(db_column='ColorCode', max_length=20, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    name = models.CharField(db_column='Name', max_length=50, db_collation='Polish_CI_AS')
+    colorcode = models.CharField(db_column='ColorCode', max_length=20, db_collation='Polish_CI_AS', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -265,14 +267,14 @@ class Taskpriorities(models.Model):
 
 
 class Tasks(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    userid = models.ForeignKey('Users', models.DO_NOTHING, db_column='UserId', blank=True, null=True)  # Field name made lowercase.
-    title = models.CharField(db_column='Title', max_length=255, db_collation='Polish_CI_AS')  # Field name made lowercase.
-    categoryid = models.ForeignKey(Budgetcategories, models.DO_NOTHING, db_column='CategoryId', blank=True, null=True)  # Field name made lowercase.
-    priorityid = models.ForeignKey(Taskpriorities, models.DO_NOTHING, db_column='PriorityId', blank=True, null=True)  # Field name made lowercase.
-    status = models.CharField(db_column='Status', max_length=20, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    duedate = models.DateField(db_column='DueDate', blank=True, null=True)  # Field name made lowercase.
-    notes = models.TextField(db_column='Notes', db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    userid = models.ForeignKey('Users', models.DO_NOTHING, db_column='UserId', blank=True, null=True)
+    title = models.CharField(db_column='Title', max_length=255, db_collation='Polish_CI_AS')
+    categoryid = models.ForeignKey(Budgetcategories, models.DO_NOTHING, db_column='CategoryId', blank=True, null=True)
+    priorityid = models.ForeignKey(Taskpriorities, models.DO_NOTHING, db_column='PriorityId', blank=True, null=True)
+    status = models.CharField(db_column='Status', max_length=20, db_collation='Polish_CI_AS', blank=True, null=True)
+    duedate = models.DateField(db_column='DueDate', blank=True, null=True)
+    notes = models.TextField(db_column='Notes', db_collation='Polish_CI_AS', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -280,12 +282,12 @@ class Tasks(models.Model):
 
 
 class Timelineevents(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    userid = models.ForeignKey('Users', models.DO_NOTHING, db_column='UserId', blank=True, null=True)  # Field name made lowercase.
-    groupid = models.ForeignKey('Timelinegroups', models.DO_NOTHING, db_column='GroupId', blank=True, null=True)  # Field name made lowercase.
-    title = models.CharField(db_column='Title', max_length=200, db_collation='Polish_CI_AS')  # Field name made lowercase.
-    details = models.TextField(db_column='Details', db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    iscompleted = models.BooleanField(db_column='IsCompleted', blank=True, null=True)  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    userid = models.ForeignKey('Users', models.DO_NOTHING, db_column='UserId', blank=True, null=True)
+    groupid = models.ForeignKey('Timelinegroups', models.DO_NOTHING, db_column='GroupId', blank=True, null=True)
+    title = models.CharField(db_column='Title', max_length=200, db_collation='Polish_CI_AS')
+    details = models.TextField(db_column='Details', db_collation='Polish_CI_AS', blank=True, null=True)
+    iscompleted = models.BooleanField(db_column='IsCompleted', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -293,9 +295,9 @@ class Timelineevents(models.Model):
 
 
 class Timelinegroups(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    name = models.CharField(db_column='Name', max_length=100, db_collation='Polish_CI_AS')  # Field name made lowercase.
-    orderindex = models.IntegerField(db_column='OrderIndex')  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    name = models.CharField(db_column='Name', max_length=100, db_collation='Polish_CI_AS')
+    orderindex = models.IntegerField(db_column='OrderIndex')
 
     class Meta:
         managed = False
@@ -303,8 +305,8 @@ class Timelinegroups(models.Model):
 
 
 class Transporttypes(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    name = models.CharField(db_column='Name', max_length=100, db_collation='Polish_CI_AS')  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    name = models.CharField(db_column='Name', max_length=100, db_collation='Polish_CI_AS')
 
     class Meta:
         managed = False
@@ -312,14 +314,14 @@ class Transporttypes(models.Model):
 
 
 class Transportvehicles(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    typeid = models.ForeignKey(Transporttypes, models.DO_NOTHING, db_column='TypeId', blank=True, null=True)  # Field name made lowercase.
-    name = models.CharField(db_column='Name', max_length=200, db_collation='Polish_CI_AS')  # Field name made lowercase.
-    city = models.CharField(db_column='City', max_length=100, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    capacity = models.IntegerField(db_column='Capacity', blank=True, null=True)  # Field name made lowercase.
-    pricefrom = models.DecimalField(db_column='PriceFrom', max_digits=10, decimal_places=2, blank=True, null=True)  # Field name made lowercase.
-    description = models.TextField(db_column='Description', db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    imageurl = models.TextField(db_column='ImageUrl', db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    typeid = models.ForeignKey(Transporttypes, models.DO_NOTHING, db_column='TypeId', blank=True, null=True)
+    name = models.CharField(db_column='Name', max_length=200, db_collation='Polish_CI_AS')
+    city = models.CharField(db_column='City', max_length=100, db_collation='Polish_CI_AS', blank=True, null=True)
+    capacity = models.IntegerField(db_column='Capacity', blank=True, null=True)
+    pricefrom = models.DecimalField(db_column='PriceFrom', max_digits=10, decimal_places=2, blank=True, null=True)
+    description = models.TextField(db_column='Description', db_collation='Polish_CI_AS', blank=True, null=True)
+    imageurl = models.TextField(db_column='ImageUrl', db_collation='Polish_CI_AS', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -327,11 +329,11 @@ class Transportvehicles(models.Model):
 
 
 class Userfavorites(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    userid = models.ForeignKey('Users', models.DO_NOTHING, db_column='UserId', blank=True, null=True)  # Field name made lowercase.
-    serviceid = models.IntegerField(db_column='ServiceId')  # Field name made lowercase.
-    servicetype = models.CharField(db_column='ServiceType', max_length=50, db_collation='Polish_CI_AS')  # Field name made lowercase.
-    savedat = models.DateTimeField(db_column='SavedAt', blank=True, null=True)  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    userid = models.ForeignKey('Users', models.DO_NOTHING, db_column='UserId', blank=True, null=True)
+    serviceid = models.IntegerField(db_column='ServiceId')
+    servicetype = models.CharField(db_column='ServiceType', max_length=50, db_collation='Polish_CI_AS')
+    savedat = models.DateTimeField(db_column='SavedAt', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -339,13 +341,13 @@ class Userfavorites(models.Model):
 
 
 class Users(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    email = models.CharField(db_column='Email', unique=True, max_length=255, db_collation='Polish_CI_AS')  # Field name made lowercase.
-    passwordhash = models.TextField(db_column='PasswordHash', db_collation='Polish_CI_AS')  # Field name made lowercase.
-    fullname = models.CharField(db_column='FullName', max_length=100, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    role = models.CharField(db_column='Role', max_length=20, db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    weddingdate = models.DateField(db_column='WeddingDate', blank=True, null=True)  # Field name made lowercase.
-    createdat = models.DateTimeField(db_column='CreatedAt', blank=True, null=True)  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    email = models.CharField(db_column='Email', unique=True, max_length=255, db_collation='Polish_CI_AS')
+    passwordhash = models.TextField(db_column='PasswordHash', db_collation='Polish_CI_AS')
+    fullname = models.CharField(db_column='FullName', max_length=100, db_collation='Polish_CI_AS', blank=True, null=True)
+    role = models.CharField(db_column='Role', max_length=20, db_collation='Polish_CI_AS', blank=True, null=True)
+    weddingdate = models.DateField(db_column='WeddingDate', blank=True, null=True)
+    createdat = models.DateTimeField(db_column='CreatedAt', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -353,19 +355,19 @@ class Users(models.Model):
 
 
 class Venuefeaturemap(models.Model):
-
-    venueid = models.ForeignKey('Venues', models.DO_NOTHING, db_column='VenueId', primary_key=True) 
+    # POPRAWKA: Usunięto CompositePrimaryKey
+    venueid = models.ForeignKey('Venues', models.DO_NOTHING, db_column='VenueId', primary_key=True)
     featureid = models.ForeignKey('Venuefeatures', models.DO_NOTHING, db_column='FeatureId')
 
     class Meta:
         managed = False
         db_table = 'VenueFeatureMap'
-        unique_together = (('venueid', 'featureid'),)
+        unique_together = (('venueid', 'featureid'),) # Dodano dla poprawności w Django
 
 
 class Venuefeatures(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    name = models.CharField(db_column='Name', max_length=100, db_collation='Polish_CI_AS')  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    name = models.CharField(db_column='Name', max_length=100, db_collation='Polish_CI_AS')
 
     class Meta:
         managed = False
@@ -373,14 +375,14 @@ class Venuefeatures(models.Model):
 
 
 class Venues(models.Model):
-    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    name = models.CharField(db_column='Name', max_length=200, db_collation='Polish_CI_AS')  # Field name made lowercase.
-    city = models.CharField(db_column='City', max_length=100, db_collation='Polish_CI_AS')  # Field name made lowercase.
-    capacity = models.IntegerField(db_column='Capacity')  # Field name made lowercase.
-    priceperperson = models.DecimalField(db_column='PricePerPerson', max_digits=10, decimal_places=2)  # Field name made lowercase.
-    description = models.TextField(db_column='Description', db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    imageurl = models.TextField(db_column='ImageUrl', db_collation='Polish_CI_AS', blank=True, null=True)  # Field name made lowercase.
-    rating = models.DecimalField(db_column='Rating', max_digits=2, decimal_places=1, blank=True, null=True)  # Field name made lowercase.
+    id = models.AutoField(db_column='Id', primary_key=True)
+    name = models.CharField(db_column='Name', max_length=200, db_collation='Polish_CI_AS')
+    city = models.CharField(db_column='City', max_length=100, db_collation='Polish_CI_AS')
+    capacity = models.IntegerField(db_column='Capacity')
+    priceperperson = models.DecimalField(db_column='PricePerPerson', max_digits=10, decimal_places=2)
+    description = models.TextField(db_column='Description', db_collation='Polish_CI_AS', blank=True, null=True)
+    imageurl = models.TextField(db_column='ImageUrl', db_collation='Polish_CI_AS', blank=True, null=True)
+    rating = models.DecimalField(db_column='Rating', max_digits=2, decimal_places=1, blank=True, null=True)
 
     class Meta:
         managed = False
