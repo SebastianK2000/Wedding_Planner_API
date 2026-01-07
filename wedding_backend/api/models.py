@@ -1,11 +1,5 @@
-﻿# This is an auto-generated Django model module.
-# You'll have to do the following manually to clean this up:
-#   * Rearrange models' order
-#   * Make sure each model has one field with primary_key=True
-#   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
-#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
-# Feel free to rename the models, but don't rename db_table values or field names.
-from django.db import models
+﻿from django.db import models
+from django.contrib.auth.models import BaseUserManager
 
 
 class Budgetcategories(models.Model):
@@ -179,14 +173,13 @@ class Musicians(models.Model):
 
 
 class Musicianstypemap(models.Model):
-    # POPRAWKA: Usunięto CompositePrimaryKey
     musicianid = models.ForeignKey(Musicians, models.DO_NOTHING, db_column='MusicianId', primary_key=True)
     typeid = models.ForeignKey(Musiciantypes, models.DO_NOTHING, db_column='TypeId')
 
     class Meta:
         managed = False
         db_table = 'MusiciansTypeMap'
-        unique_together = (('musicianid', 'typeid'),) # Dodano dla poprawności w Django
+        unique_together = (('musicianid', 'typeid'),)
 
 
 class Newslettersubscribers(models.Model):
@@ -201,14 +194,13 @@ class Newslettersubscribers(models.Model):
 
 
 class Photographerstylemap(models.Model):
-    # POPRAWKA: Usunięto CompositePrimaryKey
     photographerid = models.ForeignKey('Photographers', models.DO_NOTHING, db_column='PhotographerId', primary_key=True)
     styleid = models.ForeignKey('Photographerstyles', models.DO_NOTHING, db_column='StyleId')
 
     class Meta:
         managed = False
         db_table = 'PhotographerStyleMap'
-        unique_together = (('photographerid', 'styleid'),) # Dodano dla poprawności w Django
+        unique_together = (('photographerid', 'styleid'),)
 
 
 class Photographerstyles(models.Model):
@@ -339,15 +331,61 @@ class Userfavorites(models.Model):
         managed = False
         db_table = 'UserFavorites'
 
+class UsersManager(BaseUserManager):
+    def create_user(self, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError('Email jest wymagany')
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password) 
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, email, password=None, **extra_fields):
+        extra_fields.setdefault('role', 'Admin')
+        return self.create_user(email, password, **extra_fields)
+
+    def get_by_natural_key(self, email):
+        return self.get(email=email)
+
 
 class Users(models.Model):
     id = models.AutoField(db_column='Id', primary_key=True)
     email = models.CharField(db_column='Email', unique=True, max_length=255, db_collation='Polish_CI_AS')
-    passwordhash = models.TextField(db_column='PasswordHash', db_collation='Polish_CI_AS')
+    password = models.TextField(db_column='PasswordHash', db_collation='Polish_CI_AS') 
     fullname = models.CharField(db_column='FullName', max_length=100, db_collation='Polish_CI_AS', blank=True, null=True)
     role = models.CharField(db_column='Role', max_length=20, db_collation='Polish_CI_AS', blank=True, null=True)
     weddingdate = models.DateField(db_column='WeddingDate', blank=True, null=True)
     createdat = models.DateTimeField(db_column='CreatedAt', blank=True, null=True)
+
+    objects = UsersManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['fullname'] 
+
+    def set_password(self, raw_password):
+        from django.contrib.auth.hashers import make_password
+        self.password = make_password(raw_password)
+    
+    def check_password(self, raw_password):
+        from django.contrib.auth.hashers import check_password
+        return check_password(raw_password, self.password)
+
+    @property
+    def is_anonymous(self): return False
+    @property
+    def is_authenticated(self): return True
+    @property
+    def is_active(self): return True
+    @property
+    def is_staff(self): return self.role == 'Admin'
+    @property
+    def is_superuser(self): return self.role == 'Admin'
+
+    def has_perm(self, perm, obj=None): return self.is_staff
+    def has_module_perms(self, app_label): return self.is_staff
+    @property
+    def last_login(self): return None
 
     class Meta:
         managed = False
@@ -355,14 +393,13 @@ class Users(models.Model):
 
 
 class Venuefeaturemap(models.Model):
-    # POPRAWKA: Usunięto CompositePrimaryKey
     venueid = models.ForeignKey('Venues', models.DO_NOTHING, db_column='VenueId', primary_key=True)
     featureid = models.ForeignKey('Venuefeatures', models.DO_NOTHING, db_column='FeatureId')
 
     class Meta:
         managed = False
         db_table = 'VenueFeatureMap'
-        unique_together = (('venueid', 'featureid'),) # Dodano dla poprawności w Django
+        unique_together = (('venueid', 'featureid'),)
 
 
 class Venuefeatures(models.Model):
